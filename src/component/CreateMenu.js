@@ -15,24 +15,6 @@ function CreateMenu({ handleClickBtn }) {
     level: "",
   });
 
-  const validateEmail = (email) => {
-    const emformat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emformat.test(email);
-  };
-
-  // Function to check if any field is empty
-  const validateFields = () => {
-    if (!newUser.name || !newUser.email || !newUser.country || !newUser.gender || !newUser.level) {
-      alert("Please fill in all fields.");
-      return false;
-    }
-    if (!validateEmail(newUser.email)) {
-      alert("Please enter a valid email address.");
-      return false;
-    }
-    return true;
-  };
-
   const addNewRow = () => {
     setTableData([
       ...tableData,
@@ -42,18 +24,25 @@ function CreateMenu({ handleClickBtn }) {
   };
 
   const saveRow = () => {
-    if (!validateFields()) {
-      return; // Stop if validation fails
-    }
+    const updatedTableData = [...tableData];
+    updatedTableData[editingIndex] = newUser;
+    setTableData(updatedTableData);
+    localStorage.setItem("tableData", JSON.stringify(updatedTableData));
+    setNewUser({ name: "", email: "", country: "", gender: "", level: "" });
+    setEditingIndex(null);
 
-    if (editingIndex !== null) {
-      const updatedTableData = [...tableData];
-      updatedTableData[editingIndex] = newUser;
-      setTableData(updatedTableData);
-      localStorage.setItem("tableData", JSON.stringify(updatedTableData));
-      setNewUser({ name: "", email: "", country: "", gender: "", level: "" });
-      setEditingIndex(null);
-    }
+    // if (!validateFields()) {
+    //   return; // Stop if validation fails
+    // }
+
+    // if (editingIndex !== null) {
+    //   const updatedTableData = [...tableData];
+    //   updatedTableData[editingIndex] = newUser;
+    //   setTableData(updatedTableData);
+    //   localStorage.setItem("tableData", JSON.stringify(updatedTableData));
+    //   setNewUser({ name: "", email: "", country: "", gender: "", level: "" });
+    //   setEditingIndex(null);
+    // }
   };
 
   return (

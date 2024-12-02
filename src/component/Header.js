@@ -20,9 +20,12 @@ const Header = () => {
   };
 
   const steps = [
-    { label: 'Section 1', content: <CampaignDetail handleClickBtn={handleClickBtn} />, description: 'Enter Basic Campaign Details' },
-    { label: 'Section 2', content: <CreateMenu handleClickBtn={handleClickBtn} editedUsers={editedUsers} setEditedUsers={setEditedUsers} />, description: 'Create Menu' },
-    { label: 'Section 3', content: <MenuDetails />, description: 'Enter Menu Details' },
+    { label: 'Section 1', content: <CampaignDetail handleClickBtn={handleClickBtn} />, 
+    description: 'Enter Basic Campaign Details' },
+    { label: 'Section 2', content: <CreateMenu handleClickBtn={handleClickBtn} editedUsers={editedUsers} setEditedUsers={setEditedUsers} />, 
+    description: 'Create Menu' },
+    { label: 'Section 3', content: <MenuDetails />, 
+    description: 'Enter Menu Details' },
   ];
 
   const getStepIcon = (i) => {

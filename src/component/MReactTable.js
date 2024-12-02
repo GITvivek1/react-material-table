@@ -1,11 +1,7 @@
 import React, { useMemo, useEffect } from "react";
 import { MaterialReactTable } from "material-react-table";
-import { Autocomplete, TextField } from "@mui/material";
-import countries from "./countries";
 
 function Table({ tableData, setTableData, setNewUser }) {
-  
-
   useEffect(() => {
     const savedData = localStorage.getItem("tableData");
     if (savedData) {
@@ -19,7 +15,6 @@ function Table({ tableData, setTableData, setNewUser }) {
         accessorKey: "name",
         header: "Name",
         muiEditTextFieldProps: ({ cell, row }) => ({
-          required: true,
           type: "text",
           onChange: (event) => {
             const name = event.target.value;
@@ -31,7 +26,6 @@ function Table({ tableData, setTableData, setNewUser }) {
         accessorKey: "email",
         header: "Email",
         muiEditTextFieldProps: ({ cell, row }) => ({
-          required: true,
           type: "email",
           onChange: (event) => {
             const email = event.target.value;
@@ -45,7 +39,6 @@ function Table({ tableData, setTableData, setNewUser }) {
         editVariant: "select",
         editSelectOptions: ["Male", "Female"],
         muiEditTextFieldProps: {
-          required: true,
           select: true,
           onChange: (event) => {
             const gender = event.target.value;
@@ -56,26 +49,14 @@ function Table({ tableData, setTableData, setNewUser }) {
       {
         accessorKey: "country",
         header: "Country",
-        muiEditTextFieldProps: {
-          required: true,
-          children: (
-            <Autocomplete
-              freeSolo
-              options={countries.map((option) => option.title)}
-              onInputChange={(event, value) => {
-                setNewUser((prev) => ({ ...prev, country: value }));
-              }}
-              onChange={(event, value) => {
-                // Jab user option select kare dropdown se
-                setNewUser((prev) => ({ ...prev, country: value }));
-              }}
-              renderInput={(params) => (
-                <TextField {...params} label="Country" />
-              )}
-            />
-          ),
-        },
-      },      
+        muiEditTextFieldProps: ({ cell, row }) => ({
+          type: "country",
+          onChange: (event) => {
+            const country = event.target.value;
+            setNewUser((prev) => ({ ...prev, country }));
+          },
+        }),
+      },
       {
         accessorKey: "level",
         header: "Level",
@@ -89,12 +70,15 @@ function Table({ tableData, setTableData, setNewUser }) {
           },
         },
       },
+      {
+        
+      }
     ],
     []
   );
 
   return (
-    <div className="box-border m-10 p-8 border-4 border-teal-400">
+    <div className="box-border m-10 p-8 border-4 border-gray-400 rounded-md">
       <MaterialReactTable
         columns={columns}
         data={tableData}

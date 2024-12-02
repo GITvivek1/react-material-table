@@ -30,19 +30,6 @@ function CreateMenu({ handleClickBtn }) {
     localStorage.setItem("tableData", JSON.stringify(updatedTableData));
     setNewUser({ name: "", email: "", country: "", gender: "", level: "" });
     setEditingIndex(null);
-
-    // if (!validateFields()) {
-    //   return; // Stop if validation fails
-    // }
-
-    // if (editingIndex !== null) {
-    //   const updatedTableData = [...tableData];
-    //   updatedTableData[editingIndex] = newUser;
-    //   setTableData(updatedTableData);
-    //   localStorage.setItem("tableData", JSON.stringify(updatedTableData));
-    //   setNewUser({ name: "", email: "", country: "", gender: "", level: "" });
-    //   setEditingIndex(null);
-    // }
   };
 
   return (

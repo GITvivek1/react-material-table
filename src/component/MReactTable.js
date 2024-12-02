@@ -50,7 +50,7 @@ function Table({ tableData, setTableData, setNewUser }) {
         accessorKey: "country",
         header: "Country",
         muiEditTextFieldProps: ({ cell, row }) => ({
-          type: "country",
+          type: "text",
           onChange: (event) => {
             const country = event.target.value;
             setNewUser((prev) => ({ ...prev, country }));
@@ -70,9 +70,6 @@ function Table({ tableData, setTableData, setNewUser }) {
           },
         },
       },
-      {
-        
-      }
     ],
     []
   );

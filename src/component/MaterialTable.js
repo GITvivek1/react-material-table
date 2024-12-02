@@ -2,30 +2,19 @@ import { accordionActionsClasses } from "@mui/material";
 
     [
       {
-        accessorKey: 'menu',
-        header: 'Menu',
-        muiEditTextFieldProps:({
-          type: 'text',
-          onChange: (event) => {
-            const menu = event.target.value;
-            setNewUser((prev) => ({ ...prev, menu }));
-          },
-        })
-      },
-      {
-        accessorKey: 'mnamelocallanguage',
+        accessorKey: 'menu_name_local_language',
         header: 'Menu Name Local Language',
       },
       {
-        accessorKey: 'menutype',
+        accessorKey: 'menu_type',
         header: 'Menu Type',
       },
       {
-        accessorKey: 'producttype',
+        accessorKey: 'product_type',
         header: 'Product Type',
       },
       {
-        accessorKey: 'servingcategory',
+        accessorKey: 'serving_category',
         header: 'Serving Catergory'
       },
       {
@@ -33,11 +22,11 @@ import { accordionActionsClasses } from "@mui/material";
         header: 'Type'
       },
       {
-        accessorKey: 'menucategory',
+        accessorKey: 'menu_category',
         header: 'Menu Category'
       },
       {
-        accessorKey: 'itemtype',
+        accessorKey: 'item_type',
         header: 'Item Type'
       },
       {
@@ -45,6 +34,15 @@ import { accordionActionsClasses } from "@mui/material";
         header: 'Layer'
       },
       {
-        
-      }
+        accessorKey: 'Categ_attribute',
+        header: 'Category Attribute'
+      },
+      {
+        accessorKey: 'market',
+        header: 'Market'
+      },
+      {
+        accessorKey: 'remarks',
+        header: 'Remarks'
+      },
     ]
